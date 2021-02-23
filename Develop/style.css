@@ -1,0 +1,42 @@
+body{
+    height: 100%;
+}
+
+.topBar {
+
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.gameTimer {
+
+    min-width: 125px;
+
+}
+
+.quizArea {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    min-height: 375px;
+}
+
+#question {
+
+    min-height: 50px;
+}
+
+#choiceArea {
+
+    display: grid;
+    gap: 15px;
+}
+
+.button:hover {
+
+    border-color: black;
+
+}
