@@ -1,12 +1,41 @@
 const questionArea = document.getElementById('question');
 const questionElement = document.getElementById('question');
-const answerButtons = document.getElementById('choiceArea'); //
+const answerButtons = document.getElementById('choiceArea'); 
+const answerFeedback = document.getElementById('answerFeedback');
 
-let shuffledQuestions, currentQuestion;
+let shuffledQuestions = 0; 
+let currentQuestion = 0;
+let pointsScored = 0;
 
 window.addEventListener('load', gameLoop);
+answerButtons.addEventListener('click', () => { 
+    currentQuestion++
+    nextQuestion()
+})
+//
+function startTimer(duration, display) {
+    var timer = duration, minutes, seconds;
+    setInterval(function () {
+        minutes = parseInt(timer / 60, 10);
+        seconds = parseInt(timer % 60, 10);
 
+        minutes = minutes < 10 ? "0" + minutes : minutes;
+        seconds = seconds < 10 ? "0" + seconds : seconds;
 
+        display.textContent = minutes + ":" + seconds;
+
+        if (--timer < 0) {
+            timer = duration;
+        }
+    }, 1000);
+}
+
+window.onload = function () {
+    var fiveMinutes = 60 * 5,
+        display = document.querySelector('#time');
+    startTimer(fiveMinutes, display);
+};
+//
 function gameLoop(){
 
     shuffledQuestions = questions.sort(() => Math.random() - .5);
@@ -19,6 +48,7 @@ function nextQuestion(){
 
     resetGameField();
     showQuestion(shuffledQuestions[currentQuestion]);
+    // console.log(pointsScored);
 
 }
 
@@ -60,18 +90,36 @@ function selectedAnswer(e){
     Array.from(answerButtons.children).forEach(button => {
         setStatusClass(button, button.dataset.correct);
     })
-    
-    
+    if(shuffledQuestions.length > currentQuestion + 1){
+        nextQuestion();
+    }
+
+
+
 }
 
 function setStatusClass(element, correct){
     clearStatus(element);
 
+    //this always says incorrect don't know why
+
     if(correct) {
 
         element.classList.add('correct')
+        answerFeedback.innerText = "Correct";
+        answerFeedback.classList.remove('hide');
+        pointsScored = pointsScored + 5;
+
+         
+
+
     } else {
         element.classList.add('wrong')
+        answerFeedback.innerText = "Incorrect";
+        answerFeedback.classList.remove('hide');
+         pointsScored = pointsScored - 3;
+
+        
     }
 
 }
@@ -80,6 +128,7 @@ function clearStatus(element){
 
     element.classList.remove('correct');
     element.classList.remove('wrong');
+    //answerFeedback.classList.add('hide');
 }
 
 const questions = [
@@ -90,6 +139,26 @@ const questions = [
             { text: "Creates a variable that can be changed freely", correct: false},
             { text: "Makes a frog ribbit somewhere in the universe" , correct: false},
             { text: "Initalizes an array of size 0", correct: false}
+        ]
+    },
+
+    {
+        question: "What does the let tag do?",
+        answer: [ 
+            { text: "Creates a variable that can't be changed", correct: true },
+            { text: "Creates a variable that can be changed freely", correct: false},
+            { text: "Makes a frog ribbit somewhere in the universe" , correct: false},
+            { text: "Initalizes an array of size 10000", correct: false}
+        ]
+    },
+
+    {
+        question: "What does the javascript tag do?",
+        answer: [ 
+            { text: "Creates a variable that can't be changed", correct: true },
+            { text: "Creates a variable that can be changed freely", correct: false},
+            { text: "Makes a frog ribbit somewhere in the universe" , correct: false},
+            { text: "Initalizes an array of size 40000", correct: false}
         ]
     }
 ]

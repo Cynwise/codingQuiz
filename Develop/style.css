@@ -33,10 +33,31 @@ body{
 
     display: grid;
     gap: 15px;
+
 }
 
 .button:hover {
 
     border-color: black;
+
+}
+
+#answerFeedback {
+
+    margin-top: 20px;
+    justify-content: left;
+    width: 50%;
+
+}
+
+hr{
+    border-top: 1px solid black;
+    width: 33%;
+    margin-top: 25px;
+}
+
+.hide {
+
+    display: none;
 
 }
