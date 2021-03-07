@@ -145,20 +145,20 @@ const questions = [
     {
         question: "What does the let tag do?",
         answer: [ 
-            { text: "Creates a variable that can't be changed", correct: true },
-            { text: "Creates a variable that can be changed freely", correct: false},
-            { text: "Makes a frog ribbit somewhere in the universe" , correct: false},
-            { text: "Initalizes an array of size 10000", correct: false}
+            { text: "Creates a variable that can't be changed", correct: false },
+            { text: "Creates a variable that can be changed freely", correct: true},
+            { text: "Makes a frog emerge from it's hollow somewhere in Montana" , correct: false},
+            { text: "Creates a function", correct: false}
         ]
     },
 
     {
-        question: "What does the javascript tag do?",
+        question: "How many variables can you pass into a function declaration?",
         answer: [ 
-            { text: "Creates a variable that can't be changed", correct: true },
-            { text: "Creates a variable that can be changed freely", correct: false},
-            { text: "Makes a frog ribbit somewhere in the universe" , correct: false},
-            { text: "Initalizes an array of size 40000", correct: false}
+            { text: "Javascript is limited to 10 at any given time.", correct: false },
+            { text: "It's limited to the memory present on the computer running the program.", correct: false},
+            { text: "As many as the programmer wishes." , correct: true},
+            { text: "40000", correct: false}
         ]
     }
 ]
